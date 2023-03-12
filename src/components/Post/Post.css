@@ -1,0 +1,11 @@
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  /* border: 1px solid green; */
+  margin: 1rem;
+}
+.button-wrapper {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 0.6rem;
+}

@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import React from "react";
+import "./App.css";
+import PostMessage from "./components/Post/PostMessage";
+import Navbar from "./components/Navbar/Navbar";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import SinglePost from "./components/SinglePost/SinglePost";
+class App extends React.Component {
+  render() {
+    return (
+      <Router>
+        <Navbar />
+        {/* <PostMessage /> */}
+        <Switch>
+          <Route exact path="/" component={PostMessage} />
+          <Route path="/post/:id" component={SinglePost} />
+        </Switch>
+      </Router>
+    );
+  }
 }
 
 export default App;
+
+/*
+Todo:Add icon in button 
+Todo:Add validation
+Todo:Check Validation
+Todo:Check code for edit button ,if possible store isOpen in store as variable
+Todo:Make a seperate action ,reducers for comment operations.
+*/

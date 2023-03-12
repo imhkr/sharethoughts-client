@@ -1,7 +1,17 @@
 .App {
   text-align: center;
 }
-
+* {
+  margin: 0;
+  border: 0;
+  padding: 0;
+  outline: 0;
+  font-family: "Rubik", sans-serif;
+}
+body {
+  background-color: #f1f3f6;
+  box-sizing: border-box;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;

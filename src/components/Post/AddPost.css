@@ -1,0 +1,26 @@
+.inputWrapper {
+  width: 60vw;
+  background-color: white;
+  margin: auto;
+  margin-top: -1.1rem;
+}
+.input-heading {
+  padding-top: 1rem;
+  text-align: center;
+}
+.input {
+  width: 99%;
+  height: 1.8rem;
+  border: 2px solid rgb(207, 204, 204);
+  margin-left: 0.1rem;
+}
+.subheading {
+  margin-left: 0.6rem;
+}
+input:focus {
+  outline: none;
+}
+.joditwrapper {
+  width: 91%;
+  margin: auto;
+}
