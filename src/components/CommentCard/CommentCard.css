@@ -1,0 +1,53 @@
+.comment-cardWrapper {
+  margin: -7rem 0;
+}
+.comment-card {
+  background-color: #fcfcfc;
+  width: 40rem;
+  height: 10rem;
+  margin: 10rem 13rem;
+  position: relative;
+  border-radius: 0.5rem;
+  border: 2px solid rgb(243, 234, 234);
+}
+.comment-section {
+  padding: 1rem 1rem;
+  color: black;
+  font-size: 1rem;
+  max-height: 3.5rem;
+  overflow: scroll-y;
+}
+.square {
+  position: absolute;
+  bottom: 1px;
+  width: 60px;
+  height: 80px;
+  background-color: #fcfcfc;
+  transform: rotate(45deg);
+  z-index: -1;
+  top: 0.6rem;
+  border: 2px solid rgb(243, 234, 234);
+}
+.comment-time {
+  color: #22215b80;
+  position: absolute;
+  bottom: 0.3rem;
+  left: 0.7rem;
+}
+.comment-options {
+  position: absolute;
+  bottom: 0.3rem;
+  right: 0.7rem;
+}
+.comment-options span {
+  padding-left: 1rem;
+  cursor: pointer;
+}
+.img-cardHandler {
+  position: absolute;
+  left: -9.3rem;
+}
+.img-cardHandler img {
+  border-radius: 50%;
+  border: 2px solid gray;
+}

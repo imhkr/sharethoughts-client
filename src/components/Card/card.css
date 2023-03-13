@@ -70,6 +70,19 @@
   /* position: absolute;
   top: 2; */
 }
+/* .icon-setter {
+  padding-top: -1rem;
+  text-align: center;
+} */
+.icon {
+  color: red;
+  text-align: end;
+}
+/* .icon-center {
+  text-align: center;
+  margin-top: -12rem;
+  color: aqua;
+} */
 /* .Cardwrapper {
   width: 20rem;
   height: 20rem;

@@ -4,6 +4,7 @@ import PostMessageForm from "../Post/PostMessageForm";
 import MyButton from "../Button/Button";
 import { connect } from "react-redux";
 import * as actions from "../../redux/actions/postMessage";
+import PostAddIcon from "@mui/icons-material/PostAdd";
 class Navbar extends Component {
   constructor(props) {
     super(props);
@@ -34,7 +35,7 @@ class Navbar extends Component {
             Add Post
           </button> */}
           <MyButton onClick={this.toggleDialog} isprimary={"true"}>
-            Add Post
+            <PostAddIcon />
           </MyButton>
         </nav>
         {isOpen && <PostMessageForm />}

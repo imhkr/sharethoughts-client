@@ -5,6 +5,11 @@ import * as actions from "../../redux/actions/postMessage";
 import MyButton from "../Button/Button";
 import { withRouter } from "react-router-dom";
 import { compose } from "redux";
+import EditIcon from "@mui/icons-material/Edit";
+import DeleteIcon from "@mui/icons-material/Delete";
+import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
+import PersonIcon from "@mui/icons-material/Person";
+import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 class CardComponent extends Component {
   constructor(props) {
     super(props);
@@ -47,20 +52,29 @@ class CardComponent extends Component {
         </div>
         <h3 className="blog-title">{title}</h3>
         <div className="blog-td-wrapper">
-          <span className="blog-time">{post_date}</span>
-          <span className="blog-time">{author}</span>
+          <h5 className="blog-time">
+            <CalendarMonthIcon className="icon" />
+            {post_date}
+          </h5>
+
+          <h5 className="blog-time">
+            <PersonIcon />
+            {author}
+          </h5>
         </div>
 
         <p className="description">{content}</p>
         {/* <p>{this.props.getCurrentPostId}</p> */}
         <div className="options">
           <MyButton isprimary={"true"} onClick={() => this.setCurrentId(id)}>
-            Edit
+            <EditIcon />
           </MyButton>
           <button className="btn" onClick={this.handleClick}>
-            View More
+            <RemoveRedEyeIcon />
           </button>
-          <MyButton onClick={() => this.onDelete(id)}>Delete</MyButton>
+          <MyButton onClick={() => this.onDelete(id)}>
+            <DeleteIcon />
+          </MyButton>
         </div>
         {/* </div> */}
       </div>

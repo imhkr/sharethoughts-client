@@ -4,6 +4,9 @@ import { compose } from "redux";
 import { connect } from "react-redux";
 import * as actions from "../../redux/actions/postMessage";
 import "./PostWrapper.css";
+import MyButton from "../Button/Button";
+import InsertCommentIcon from "@mui/icons-material/InsertComment";
+import CommentCard from "../CommentCard/CommentCard";
 const initialFieldValues = {
   title: "",
   message: "",
@@ -30,6 +33,7 @@ class SinglePost extends Component {
   }
   handleInputChange = (event) => {
     this.setState({ text: event.target.value });
+    console.log("text ", this.state.text);
   };
 
   handleSubmit = (event) => {
@@ -60,8 +64,19 @@ class SinglePost extends Component {
         </div>
         <p className="des">{message}</p>
         <form onSubmit={this.handleSubmit}>
-          <input type="text" value={text} onChange={this.handleInputChange} />
-          <button type="submit">Add Comment</button>
+          <input
+            type="text"
+            value={text}
+            onChange={this.handleInputChange}
+            className="input"
+            maxlength="20"
+          />
+          <MyButton isprimary={"true"}>
+            <InsertCommentIcon />
+          </MyButton>
+          {comments?.map((item, index) => {
+            return <CommentCard text={item.text} created_at={item.timestamp} />;
+          })}
         </form>
       </div>
     );
