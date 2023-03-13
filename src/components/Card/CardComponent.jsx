@@ -42,14 +42,14 @@ class CardComponent extends Component {
         </div>
         <h3 className="blog-title">{title}</h3>
         <div className="blog-td-wrapper">
-          <span class="blog-time">{post_date}</span>
+          <span className="blog-time">{post_date}</span>
           <span className="blog-time">{author}</span>
         </div>
 
         <p className="description">{content}</p>
         {/* <p>{this.props.getCurrentPostId}</p> */}
         <div className="options">
-          <MyButton isprimary={true} onClick={() => this.setCurrentId(id)}>
+          <MyButton isprimary={"true"} onClick={() => this.setCurrentId(id)}>
             Edit
           </MyButton>
           <button className="btn" onClick={this.handleClick}>

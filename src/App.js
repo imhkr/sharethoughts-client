@@ -22,6 +22,7 @@ class App extends React.Component {
 export default App;
 
 /*
+Todo:Add a loader
 Todo:Add icon in button 
 Todo:Add validation
 Todo:Check Validation
