@@ -4,6 +4,7 @@ import * as actions from "../../redux/actions/postMessage";
 import "./AddPost.css";
 import JoditEditor from "jodit-react";
 import MyButton from "../Button/Button";
+import sanitizeHtml from "sanitize-html";
 const initialFieldValues = {
   title: "",
   message: "",
@@ -19,18 +20,26 @@ class PostMessageForm extends Component {
       content: "",
     };
   }
-
-  componentDidUpdate(prevProps) {
+  componentDidMount() {
+    console.log("Hi I am mounted");
     const { postMessageId, postMessageList } = this.props;
-    if (postMessageId != prevProps.postMessageId) {
+    console.log("postMessageId ", postMessageId);
+    if (postMessageId != 0) {
       console.log("I am called");
       this.setState({
         values: postMessageList.find((item) => item._id == postMessageId),
       });
     }
   }
+
   handleContentChange = (value) => {
-    this.setState({ content: value });
+    const editorData = sanitizeHtml(value, {
+      allowedTags: ["p", "a", "strong", "em", "u", "ul", "ol", "li"],
+      allowedAttributes: {
+        a: ["href", "target"],
+      },
+    });
+    this.setState({ content: editorData });
   };
 
   handleInputChange = (event) => {
@@ -66,6 +75,7 @@ class PostMessageForm extends Component {
     console.log("props content", this.state.content);
     const onSuccess = () => {
       window.alert("Submitted Successfully");
+      this.props.toggleDialog(); // set isOpen to false
     };
     e.preventDefault();
     if (postMessageId == 0) {
@@ -82,13 +92,17 @@ class PostMessageForm extends Component {
     });
   };
   imageUpload = (e) => {
-    console.log(e.target.files);
     this.setState({
       values: {
         ...this.state.values,
         profilePic: e.target.files[0],
       },
     });
+    console.log(e.target.files);
+  };
+  toggleDialog = () => {
+    const { isOpen, setValueOfIsOpen } = this.props;
+    setValueOfIsOpen(!isOpen);
   };
   render() {
     const { values } = this.state;
@@ -107,15 +121,10 @@ class PostMessageForm extends Component {
             />
 
             <h4>Post Content</h4>
-            {/* <input
-            type="text"
-            name="message"
-            value={values.message}
-            onChange={this.handleInputChange}
-          /> */}
             <JoditEditor
               value={this.state.content}
               onChange={this.handleContentChange}
+              autofocus={false}
             />
 
             <h4>Post Author</h4>
@@ -144,9 +153,11 @@ class PostMessageForm extends Component {
 const mapStateToProps = (state) => ({
   postMessageList: state.postMessage.list,
   postMessageId: state.postMessage.currentId,
+  isOpen: state.postMessage.isOpen,
 });
 const mapActionToProps = {
   createPostMessage: actions.create,
   updatePostMessage: actions.update,
+  setValueOfIsOpen: actions.setIsOpen,
 };
 export default connect(mapStateToProps, mapActionToProps)(PostMessageForm);

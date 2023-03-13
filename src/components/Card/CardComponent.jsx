@@ -16,6 +16,14 @@ class CardComponent extends Component {
   setCurrentId = (id) => {
     const { setIdOfPost } = this.props;
     setIdOfPost(id);
+    const { isOpen, setValueOfIsOpen } = this.props;
+    console.log("value of isOpen", isOpen);
+    if (isOpen == false) {
+      console.log("I am coming in true block");
+      setValueOfIsOpen(true);
+    } else {
+      setValueOfIsOpen(false);
+    }
   };
   onDelete = (id) => {
     const { deletePost, fetchAllPost } = this.props;
@@ -28,17 +36,14 @@ class CardComponent extends Component {
     history.push(`/post/${id}`);
     // console.log("working");
   };
+
   render() {
     const { title, content, id, post_date, author } = this.props;
     return (
       // <div className="ca">
-      <div className="card" onClick={this.handleClick}>
+      <div className="card">
         <div className="card-img-holder">
-          <img
-            src={`http://localhost:4000/${this.props.img_url}`}
-            // width="100%"
-            // height="50%"
-          />
+          <img src={`http://localhost:4000/${this.props.img_url}`} />
         </div>
         <h3 className="blog-title">{title}</h3>
         <div className="blog-td-wrapper">
@@ -64,12 +69,14 @@ class CardComponent extends Component {
 }
 const mapStateToProps = (state) => ({
   getCurrentPostId: state.postMessage.currentId,
+  isOpen: state.postMessage.isOpen,
   //state.nameofReducer.state
 });
 const mapActionToProps = {
   fetchAllPost: actions.fetchAll,
   setIdOfPost: actions.setId,
   deletePost: actions.Delete,
+  setValueOfIsOpen: actions.setIsOpen,
 };
 
 export default compose(

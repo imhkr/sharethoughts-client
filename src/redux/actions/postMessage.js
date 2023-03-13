@@ -6,11 +6,19 @@ export const ACTION_TYPES = {
   DELETE: "DELETE",
   FETCH_ALL: "FETCH_ALL",
   SET_CURRENTID: "SET_CURRENTID",
+  ADD_COMMENT: "ADD_COMMENT",
+  ISOPEN: "ISOPEN",
 };
 export const setId = (id) => {
   return {
     type: ACTION_TYPES.SET_CURRENTID,
     payload: id,
+  };
+};
+export const setIsOpen = (value) => {
+  return {
+    type: ACTION_TYPES.ISOPEN,
+    payload: value,
   };
 };
 export const fetchAll = () => {
@@ -42,6 +50,20 @@ export const create = (data, onSuccess) => {
         onSuccess();
       })
       .catch((err) => console.log(err));
+  };
+};
+
+export const addComment = (id, text) => {
+  // console.log("commentData", commentData);
+  return (dispatch) => {
+    api
+      .postMessage()
+      .addSingleComment(id, text)
+      .then((res) => {
+        const savedPost = res.data.post;
+        dispatch({ type: ACTION_TYPES.ADD_COMMENT, payload: res.data });
+      })
+      .catch((err) => console.log("Adding comment err", err.message));
   };
 };
 

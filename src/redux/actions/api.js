@@ -9,6 +9,8 @@ export default {
       create: (newRecord) => axios.post(url, newRecord),
       update: (id, updateRecord) => axios.put(url + id, updateRecord),
       delete: (id) => axios.delete(url + id),
+      addSingleComment: (id, text) =>
+        axios.post(`${url}${id}/comments`, { text }),
     };
   },
 };

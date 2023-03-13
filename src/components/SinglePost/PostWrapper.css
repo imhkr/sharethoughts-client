@@ -1,0 +1,33 @@
+.PostWrapper {
+  margin: 4rem 10%;
+}
+.img-holder {
+  width: 1rem;
+  height: auto;
+  position: relative;
+}
+.img-holder img {
+  width: 80vw;
+  height: 50vh;
+  /* max-height: 15rem; */
+  border-radius: 0.5rem;
+}
+.b-time {
+  font-size: 1rem;
+  color: #22215b80;
+}
+.b-title {
+  font-size: 2rem;
+  color: black;
+  font-weight: 300;
+  text-align: center;
+}
+.info-wrapper {
+  margin: 2% 35%;
+  text-align: center;
+}
+.des {
+  padding: 3% 3%;
+  color: black;
+  font-size: 1rem;
+}

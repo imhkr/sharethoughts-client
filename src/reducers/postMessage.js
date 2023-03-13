@@ -2,6 +2,7 @@ import { ACTION_TYPES } from "../redux/actions/postMessage";
 const intialState = {
   list: [],
   currentId: 0,
+  isOpen: false,
 };
 export const postMessage = (state = intialState, action) => {
   switch (action.type) {
@@ -32,7 +33,22 @@ export const postMessage = (state = intialState, action) => {
         ...state,
         currentId: action.payload,
       };
-
+    case ACTION_TYPES.ISOPEN:
+      return {
+        ...state,
+        isOpen: action.payload,
+      };
+    case ACTION_TYPES.ADD_COMMENT:
+      const updatedPostsWithComment = state.list.map((post) => {
+        if (post._id === action.payload.postId) {
+          return { ...post, comments: action.payload.savedPost.comments };
+        }
+        return post;
+      });
+      return {
+        ...state,
+        list: updatedPostsWithComment,
+      };
     default:
       return state;
   }
